@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 
 
 class NameForm extends React.Component {
@@ -15,12 +16,18 @@ class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
+    
+    axios.get('http://example.com/posts/1').then(function (response) {
+    console.log(response);
+  })
+   }
+    /*alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();*/
 
   render() {
     return (
+    <body>
+    <br />
     <div align="center">
       <form onSubmit={this.handleSubmit}>
         <label>
@@ -29,10 +36,12 @@ class NameForm extends React.Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
-    </div>  
+    </div>
+  </body>
     );
   }
 }
+
 
 
 export default NameForm;
